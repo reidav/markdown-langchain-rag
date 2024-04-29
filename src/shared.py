@@ -20,7 +20,6 @@ def get_az_chat_openai() -> AzureChatOpenAI:
         openai_api_version="2023-05-15",
         azure_deployment=os.environ["MODEL_NAME"],
         streaming=True,
-        # streaming=True if os.environ['STREAMING_ENABLED'] == "1" else False,
         temperature=0,
     )
 
