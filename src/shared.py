@@ -132,25 +132,3 @@ def get_qa_chain(az_chat_openai, vector_store, prompt_template, question, k, fil
 
     result = qa_chain._call({"query": question})
     return result
-
-
-class ContractAnswer:
-    def __init__(
-        self,
-        contract_name: str,
-        question: str,
-        answer: object,
-        answer_contract: object,
-        answer_amendment: object,
-    ):
-        self.contract_name = contract_name
-        self.question = question
-        self.answer = answer
-        self.answer_contract = answer_contract
-        self.answer_amendment = answer_amendment
-
-    def __str__(self):
-        return f"ContractAnswer({self.contract_name}, {self.question}, {self.answer}, {self.score}, {self.source})"
-
-    def __repr__(self):
-        return f"ContractAnswer({self.contract_name}, {self.question}, {self.answer}, {self.score}, {self.source})"
