@@ -1,0 +1,5 @@
+**/assets/knowledge/**
+**/assets/staging/**
+.env
+
+**/__pycache__/**
