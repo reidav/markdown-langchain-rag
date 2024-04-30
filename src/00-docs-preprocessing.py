@@ -11,9 +11,12 @@ from shared import get_knowledge_folder, get_staging_folder
 def get_doc_as_markdown(pdf_filepath, output_filepath):
     endpoint = os.environ["DOCUMENT_INTELLIGENCE_ENDPOINT"]
     key = os.environ["DOCUMENT_INTELLIGENCE_API_KEY"]
+    api_version = os.environ.get("DOCUMENT_INTELLIGENCE_API_VERSION", "2024-02-29-preview")
 
     document_intelligence_client = DocumentIntelligenceClient(
-        endpoint, AzureKeyCredential(key)
+        endpoint, 
+        AzureKeyCredential(key), 
+        api_version=api_version
     )
 
     with open(pdf_filepath, "rb") as f:
