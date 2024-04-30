@@ -7,7 +7,6 @@ from langchain.chains import RetrievalQA
 import tiktoken
 from azure.search.documents.indexes.models import (
     SearchableField,
-    SearchField,
     SearchFieldDataType,
     SimpleField,
 )
@@ -25,7 +24,8 @@ def get_az_chat_openai() -> AzureChatOpenAI:
 
 
 def get_az_openai_embeddings() -> AzureOpenAIEmbeddings:
-    return AzureOpenAIEmbeddings(deployment="text-embedding-ada-002", chunk_size=1)
+    embedding_model = os.environ.get("AZURE_OPENAI_EMBEDDING_MODEL", "text-embedding-ada-002")
+    return AzureOpenAIEmbeddings(deployment=embedding_model, chunk_size=256)
 
 
 def get_vector_store(openai_embeddings: AzureOpenAIEmbeddings) -> AzureSearch:
@@ -45,7 +45,7 @@ def get_vector_store(openai_embeddings: AzureOpenAIEmbeddings) -> AzureSearch:
             type=SearchFieldDataType.String,
             searchable=True,
         ),
-        SearchField(
+        SearchableField(
             name="content_vector",
             type=SearchFieldDataType.Collection(SearchFieldDataType.Single),
             searchable=True,
