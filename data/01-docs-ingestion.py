@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain.text_splitter import MarkdownHeaderTextSplitter
 
-from shared import get_az_openai_embeddings, get_staging_folder, get_vector_store
+from lib.shared import get_az_openai_embeddings, get_staging_folder, get_vector_store
 
 if __name__ == "__main__":
     print("Loading Azure resources...")

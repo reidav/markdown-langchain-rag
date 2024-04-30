@@ -1,6 +1,6 @@
 import sys
 from dotenv import load_dotenv
-from shared import (
+from lib.shared import (
     get_az_chat_openai,
     get_az_openai_embeddings,
     get_vector_store,
